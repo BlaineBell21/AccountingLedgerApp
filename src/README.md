@@ -7,6 +7,7 @@ The application is designed to simulate a simple ledger system where all transac
 ---
 
 ## 📌 Features
+- ![Home Screen](images/mainScreen.png)
 
 - Add deposits (income transactions)
 - Make payments (expense transactions)
@@ -25,6 +26,8 @@ The application is designed to simulate a simple ledger system where all transac
 - Transaction vendor
 - Minimum and maximum amount
 
+- ![Custom Sorting](images/customSort.png)
+
 - Transactions are saved to a CSV file for persistence
 - Automatic loading of past transactions on startup
 
@@ -36,6 +39,8 @@ The application is designed to simulate a simple ledger system where all transac
 - File I/O (BufferedReader / BufferedWriter)
 - ArrayList
 - Object-Oriented Programming (OOP)
+
+- - ![OOP](images/OOP.png)
 
 ```
 ---
@@ -67,10 +72,10 @@ AccountingLedgerApp (Budget Forge)
 │       │           ├── InputHelper.java
 │       │           └── WriteAndReadCSV.java
 │       │
-│       └── resources/
-│           └── transactions.csv
-│
-└── README.md
+│       ├── README.md
+│       │
+        └── transactions.csv
+
            
   
 ---
