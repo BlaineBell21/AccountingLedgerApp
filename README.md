@@ -83,10 +83,8 @@ AccountingLedgerApp (Budget Forge)
 ## ▶️ How to Run the Project
 ```
 1. Clone the repository:
-
-```
 git clone https://github.com/BlaineBell21/AccountingLedgerApp.git
-
+```
 
 2. Open the project in IntelliJ IDEA (or your preferred Java IDE)
 3. Run the App class
