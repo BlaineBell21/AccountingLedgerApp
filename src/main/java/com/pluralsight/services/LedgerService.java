@@ -5,35 +5,24 @@ import com.pluralsight.ui.LedgerScreen;
 import com.pluralsight.utils.WriteAndReadCSV;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 
 public class LedgerService {
     public static void showAllTransactions(WriteAndReadCSV transactions) throws IOException {
-        ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions();
+        ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions(); //accesses transaction repository holding all transactions
 
-        Comparator<Transaction> amountComparator = new Comparator<Transaction>() {
-            @Override
-            public int compare(Transaction o1, Transaction o2) {
-                if(o1.getAmount() > o2.getAmount()){
-                    return -1;
-                } else if (o1.getAmount() < o2.getAmount()) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            }
-        };
+        listOfTransactions.sort(Comparator.comparing(Transaction::getAmount));
+
         for (Transaction transaction : listOfTransactions){
             System.out.println(transaction);
         }
         LedgerScreen.transactionHistoryEnd();
-        LedgerScreen.LedgerScreenUI(transactions);
+        LedgerScreen.LedgerScreenUI(transactions); //returns to ledger screen
     }
 
     public static void showOnlyDeposits(WriteAndReadCSV transactions) throws IOException {
-        ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions();
+        ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions(); //accesses transaction repository holding all transactions
 
         for (Transaction transaction : listOfTransactions){
             if (transaction.getAmount() > 0){
@@ -41,11 +30,11 @@ public class LedgerService {
             }
         }
         LedgerScreen.transactionHistoryEnd();
-        LedgerScreen.LedgerScreenUI(transactions);
+        LedgerScreen.LedgerScreenUI(transactions); //returns to ledger screen
     }
 
     public static void showOnlyPayments(WriteAndReadCSV transactions) throws IOException {
-       ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions();
+       ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions(); //accesses transaction repository holding all transactions
 
        for (Transaction transaction : listOfTransactions){
            if (transaction.getAmount() < 0){
@@ -53,6 +42,6 @@ public class LedgerService {
            }
        }
        LedgerScreen.transactionHistoryEnd();
-        LedgerScreen.LedgerScreenUI(transactions);
+       LedgerScreen.LedgerScreenUI(transactions); //returns to ledger screen
     }
 }

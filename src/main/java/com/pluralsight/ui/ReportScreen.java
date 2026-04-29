@@ -8,8 +8,7 @@ import java.io.IOException;
 
 public class ReportScreen {
         public static void displayReportScreen(){
-            //System.out.println("\nSelect an action to continue forging: ");
-            System.out.println("report screen check");
+           System.out.println("\nSelect an action to continue forging: ");
             System.out.println("1) month to date");
             System.out.println("2) previous month");
             System.out.println("3) previous year");
@@ -20,44 +19,45 @@ public class ReportScreen {
 
         }
         public static void ReportScreenUI(WriteAndReadCSV transactions) throws IOException {
+            //accesses all service features related to report service
             boolean isDoneForging = false;
 
-            while(!isDoneForging){
+            while(!isDoneForging){ //while false continues menu loop
                 displayReportScreen();
                 String userOption = InputHelper.promptString();
-                switch(userOption.toUpperCase()){ //allows user to enter in lower case or upper case letter without erroring
-                    case "1":
+                switch(userOption.toUpperCase()){ //allows lower case or upper case input without erroring
+                    case "1": //allows search for current month to current date
                         System.out.println("month to date");
                         isDoneForging = true;
                         ReportService.searchMonthToDate(transactions);
                         break;
-                    case "2":
+                    case "2": //allows search for previous month current year
                         System.out.println("previous month");
                         isDoneForging = true;
                         ReportService.searchByPreviousMonth(transactions);
                         break;
-                    case "3":
+                    case "3": //allows search for previous year current month
                         System.out.println("previous year");
                         isDoneForging = true;
                         ReportService.searchByPreviousYear(transactions);
                         break;
-                    case "4":
-                        System.out.println("year to date"); //custom search
+                    case "4": //allows search for current year to current date
+                        System.out.println("year to date");
                         isDoneForging = true;
                         ReportService.searchByYearToDate(transactions);
                         break;
-                    case "5":
-                        System.out.println("search by vendor"); //custom search
+                    case "5": //allows search by vendor in alphabetical order
+                        System.out.println("search by vendor");
                         isDoneForging = true;
                         ReportService.searchByVendor(transactions);
                         break;
-                    case "0":
+                    case "0": //allows user to go back to previous menu
                         System.out.println(); //eats extra line
-                        System.out.println("Returning to previous menu."); //allows user to go back to previous menu
+                        System.out.println("Returning to previous menu.");
                         isDoneForging = true;
                         HomeScreen.homeScreenUI(transactions);
                         break;
-                    default:
+                    default://if incorrect in put, restarts while loop
                         System.out.println("Invalid option, try again.\n");
                 }
             }

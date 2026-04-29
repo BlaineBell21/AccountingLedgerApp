@@ -3,7 +3,6 @@ package com.pluralsight.ui;
 import com.pluralsight.services.LedgerService;
 import com.pluralsight.utils.InputHelper;
 import com.pluralsight.utils.WriteAndReadCSV;
-
 import java.io.IOException;
 
 public class LedgerScreen {
@@ -18,32 +17,33 @@ public class LedgerScreen {
         System.out.print("Enter your choice: ");
     }
     public static void LedgerScreenUI(WriteAndReadCSV transactions) throws IOException {
+        //accesses all service features related to ledger service
         boolean isDoneForging = false;
 
         while(!isDoneForging){
             displayLedgerScreen();
             String userOption = InputHelper.promptString();
             switch(userOption.toUpperCase()){ //allows user to enter in lower case or upper case letter without erroring
-                case "D":
+                case "D": //displays all transactions unordered/unsorted
                     isDoneForging = true;
                     LedgerService.showAllTransactions(transactions);
                     break;
-                case "P":
+                case "P": //only shows deposits (positive balance transactions)
                     isDoneForging = true;
                     LedgerService.showOnlyDeposits(transactions);
                     break;
-                case "L":
+                case "L": //only shows payments (negative balance transactions)
                     isDoneForging = true;
                     LedgerService.showOnlyPayments(transactions);
                     break;
-                case "R":
-                    System.out.println("Going to report menu."); //custom search
+                case "R": //takes user to reports menu
+                    System.out.println("Going to report menu.");
                     isDoneForging = true;
                     ReportScreen.ReportScreenUI(transactions);
                     break;
-                case "X":
+                case "X": //allows user to go back to previous menu
                     System.out.println(); //eats extra line
-                    System.out.println("Returning to previous menu."); //allows user to go back to previous menu
+                    System.out.println("Returning to previous menu.");
                     isDoneForging = true;
                     HomeScreen.homeScreenUI(transactions);
                     break;

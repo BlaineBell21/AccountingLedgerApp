@@ -3,8 +3,6 @@ package com.pluralsight;
 
 import com.pluralsight.ui.HomeScreen;
 import com.pluralsight.utils.WriteAndReadCSV;
-
-
 import java.io.IOException;
 
 public class App {
