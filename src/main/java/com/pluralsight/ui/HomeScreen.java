@@ -9,13 +9,15 @@ import java.io.IOException;
 public class HomeScreen {
 
     public static void displayHomeScreen(){
-        System.out.println("\nSelect an action to continue forging: ");
-        System.out.println("D) Forge a Deposit");
-        System.out.println("P) Record a Payment");
-        System.out.println("L) Open the Ledger");
-        System.out.println("X) Exit the Forge");
-        System.out.print("Enter your choice: ");
-
+        System.out.println("\n════════════════════════════════════════════");
+        System.out.println("        ⚒️  THE FORGE WORKSHOP  ⚒️");
+        System.out.println("════════════════════════════════════════════");
+        System.out.println(" [D] Forge New Deposit");
+        System.out.println(" [P] Hammer Out Payment");
+        System.out.println(" [L] Open Financial Ledger");
+        System.out.println(" [X] Extinguish the Forge");
+        System.out.println("════════════════════════════════════════════");
+        System.out.print("Choose your next craft: ");
     }
     public static void homeScreenUI(WriteAndReadCSV transactions) throws IOException {
         boolean isDoneForging = false;
@@ -23,22 +25,22 @@ public class HomeScreen {
         while(!isDoneForging){
             displayHomeScreen();
             String userOption = InputHelper.promptString();
-            switch(userOption.toUpperCase()){ //allows user to enter in lower case or upper case letter without erroring
+            switch(userOption.trim().toUpperCase()){ //allows user to enter in lower case or upper case letter without erroring
                 case "D": //takes user to depositing service
-                    System.out.println("going to deposit menu");
+                    System.out.println("Forge a Deposit");
                    TransactionFileService.depositService();
                     break;
                 case "P": //takes user to payment service
-                    System.out.println("going to payment menu");
+                    System.out.println("Forge a Payment");
                     TransactionFileService.paymentService();
                     break;
                 case "L": //takes users to ledger menu
-                    System.out.println("going to ledger menu");
+                    System.out.println("Open the Ledger");
                     isDoneForging = true;
                     LedgerScreen.LedgerScreenUI(transactions);
                     break;
                 case "X": //exits out of program
-                    HomeScreen.goodByeMessage(); //displays good bye message
+                    HomeScreen.goodByeMessage(); //displays goodbye message
                     isDoneForging = true;
                     break;
                 default:

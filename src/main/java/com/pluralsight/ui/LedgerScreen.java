@@ -8,13 +8,16 @@ import java.io.IOException;
 public class LedgerScreen {
 
     public static void displayLedgerScreen(){
-        System.out.println("\nledger screen check: ");
-        System.out.println("D) display all entries");
-        System.out.println("P) display only deposits");
-        System.out.println("L) display only payments");
-        System.out.println("R) reports");
-        System.out.println("X) Exit the Forge");
-        System.out.print("Enter your choice: ");
+        System.out.println("\n════════════════════════════════════════════");
+        System.out.println("        📜 THE LEDGER ARCHIVES 📜");
+        System.out.println("════════════════════════════════════════════");
+        System.out.println(" [A] View All Transactions");
+        System.out.println(" [D] View Deposits");
+        System.out.println(" [P] View Payments");
+        System.out.println(" [R] Forge Reports");
+        System.out.println(" [X] Return to the Forge");
+        System.out.println("════════════════════════════════════════════");
+        System.out.print("Select a ledger action: ");
     }
     public static void LedgerScreenUI(WriteAndReadCSV transactions) throws IOException {
         //accesses all service features related to ledger service
@@ -23,26 +26,27 @@ public class LedgerScreen {
         while(!isDoneForging){
             displayLedgerScreen();
             String userOption = InputHelper.promptString();
-            switch(userOption.toUpperCase()){ //allows user to enter in lower case or upper case letter without erroring
-                case "D": //displays all transactions unordered/unsorted
+            //allows user to enter in lower case or upper case letter without erroring and removes extra space
+            switch(userOption.trim().toUpperCase()){
+                case "A": //displays all transactions unordered/unsorted
                     isDoneForging = true;
                     LedgerService.showAllTransactions(transactions);
                     break;
-                case "P": //only shows deposits (positive balance transactions)
+                case "D": //only shows deposits (positive balance transactions)
                     isDoneForging = true;
                     LedgerService.showOnlyDeposits(transactions);
                     break;
-                case "L": //only shows payments (negative balance transactions)
+                case "P": //only shows payments (negative balance transactions)
                     isDoneForging = true;
                     LedgerService.showOnlyPayments(transactions);
                     break;
                 case "R": //takes user to reports menu
-                    System.out.println("Going to report menu.");
+                    System.out.println("Opening financial reports...");
                     isDoneForging = true;
                     ReportScreen.ReportScreenUI(transactions);
                     break;
                 case "X": //allows user to go back to previous menu
-                    System.out.println("Returning to previous menu.");
+                    System.out.println("Returning to the forge...");
                     isDoneForging = true;
                     HomeScreen.homeScreenUI(transactions);
                     break;
@@ -52,7 +56,9 @@ public class LedgerScreen {
         }
     }
     public static void transactionHistoryEnd(){
-        System.out.println("End of transaction history.\n" +
-                "Returning to previous menu.");
+        System.out.println("\n════════════════════════════════════");
+        System.out.println(" End of ledger records.");
+        System.out.println(" Returning to the archives...");
+        System.out.println("════════════════════════════════════");
     }
 }
