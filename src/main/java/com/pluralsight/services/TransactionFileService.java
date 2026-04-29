@@ -76,7 +76,6 @@ public class TransactionFileService {
             WriteAndReadCSV.csvWriter(newPayment);
 
             boolean isFinished = false;
-
             while(!isFinished) {
                 System.out.println("Would you like to make another payment?");
                 System.out.println("Enter in yes or no: ");
@@ -86,8 +85,9 @@ public class TransactionFileService {
                     isDonePaying = true;
                     isFinished = true;
                     System.out.println("Returning to previous menu.");
+
                 } else if (decision.equals("yes")) { //if yes, starts while loop over for a new transaction entry
-                    System.out.println("Starting new deposit.");
+                    System.out.println("Starting new payment.");
                     break;
                 } else { //if user enters in something other than "yes" or "no" restarts loop
                     System.out.println("Incorrect input.");

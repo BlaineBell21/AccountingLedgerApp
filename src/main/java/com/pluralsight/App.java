@@ -12,6 +12,5 @@ public class App {
 
          HomeScreen.greetingMessage(); //displays app greeting message
          HomeScreen.homeScreenUI(mainTransactionReference); //puts user into main homescreen loop
-
     }
 }

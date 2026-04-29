@@ -31,7 +31,7 @@ public class ReportService {
         for (Transaction transaction : listOfTransactions){
             LocalDate transactionDate = LocalDate.parse(transaction.getDate()); //gets transaction date
             LocalDate today = LocalDate.now(); //gets current, local date
-            LocalDate previousMonth = today.minusMonths(1); //sets previous month to = current (today) month - 1 (year)
+            LocalDate previousMonth = today.minusMonths(1); //sets previous month to = current (today) month - 1 (month)
 
             if (previousMonth.getMonth() == transactionDate.getMonth() && previousMonth.getYear() == transactionDate.getYear()){
                 //checks if transaction previous month and transaction current year is the same as local previous month and local current year
@@ -185,10 +185,8 @@ public class ReportService {
 
             if(matchStartDate && matchEndDate && matchDescription && matchVendor && matchMinAmount && matchMaxAmount){
                 //checks if all criteria are met
-                System.out.println("⚒️ Match forged successfully.");
+
                 System.out.println(transaction);//once all matches are found, prints out transactions
-            } else {
-                System.out.println("No matching records were forged from your search criteria.");
             }
         }
         LedgerScreen.transactionHistoryEnd();
