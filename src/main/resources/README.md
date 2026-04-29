@@ -48,7 +48,7 @@ The application is designed to simulate a simple ledger system where all transac
 
 
 2. Open the project in IntelliJ IDEA (or your preferred Java IDE)
-3. Run the Main class
+3. Run the App class
 4. Follow the CLI menu prompts to navigate the application
 
 ## 📄 CSV Format
@@ -58,10 +58,11 @@ All transactions are stored in:
 
 Each transaction follows this format:
 
-date|time|description|vendor|amount
+
+    date|time|description|vendor|amount
 
 Example:
-```bash
+
 
     2026-04-15|10:13:25|Office Supplies|Staples|-45.99
 
