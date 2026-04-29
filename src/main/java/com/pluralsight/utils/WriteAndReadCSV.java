@@ -6,6 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class WriteAndReadCSV {
+    //array created to store transactions; encapsulation to avoid array being manipulated in areas not permitted to be
     private static ArrayList<Transaction> transactions = new ArrayList<>();
 
     public static String csvWriter(Transaction transactions) throws IOException {
@@ -14,11 +15,11 @@ public class WriteAndReadCSV {
 
             String writeTransactions = transactions.toString();
             String[] parts = writeTransactions.split("\\|");
-            if (parts.length != 5){
+            if (parts.length != 5){ //created to skip invalidly formatted transactions
                 System.out.println("Invalid format, skipping.");
             } else{
                 writer.newLine();
-                writer.append(writeTransactions);
+                writer.append(writeTransactions); //appends new transaction to existing csv file
             }
     writer.close();
     return null;
@@ -38,12 +39,12 @@ public class WriteAndReadCSV {
                     String vendorOfTransaction = parts[3].trim();
                     double amountOfTransaction = Double.parseDouble(parts[4].trim());
                    transactions.add(new Transaction(dateOfTransaction, timeOfTransaction, descriptionOfTransaction, vendorOfTransaction, amountOfTransaction));
-
+                    //reads csv file and adds transactions into array to be accessed elsewhere
                 }
             }
         reader.close();
     }
-        public static ArrayList<Transaction> getTransactions() throws IOException {
+        public static ArrayList<Transaction> getTransactions() throws IOException { //getter to access private array
         return transactions;
         }
     }

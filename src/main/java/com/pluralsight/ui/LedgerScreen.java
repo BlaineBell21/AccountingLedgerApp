@@ -42,7 +42,6 @@ public class LedgerScreen {
                     ReportScreen.ReportScreenUI(transactions);
                     break;
                 case "X": //allows user to go back to previous menu
-                    System.out.println(); //eats extra line
                     System.out.println("Returning to previous menu.");
                     isDoneForging = true;
                     HomeScreen.homeScreenUI(transactions);

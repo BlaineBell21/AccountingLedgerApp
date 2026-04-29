@@ -14,7 +14,7 @@ public class LedgerService {
 
         listOfTransactions.sort(Comparator.comparing(Transaction::getAmount));
 
-        for (Transaction transaction : listOfTransactions){
+        for (Transaction transaction : listOfTransactions){ //loops through all transactions and prints them
             System.out.println(transaction);
         }
         LedgerScreen.transactionHistoryEnd();
@@ -24,7 +24,7 @@ public class LedgerService {
     public static void showOnlyDeposits(WriteAndReadCSV transactions) throws IOException {
         ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions(); //accesses transaction repository holding all transactions
 
-        for (Transaction transaction : listOfTransactions){
+        for (Transaction transaction : listOfTransactions){ //checks for deposits (positive transactions)
             if (transaction.getAmount() > 0){
                 System.out.println(transaction);
             }
@@ -37,7 +37,7 @@ public class LedgerService {
        ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions(); //accesses transaction repository holding all transactions
 
        for (Transaction transaction : listOfTransactions){
-           if (transaction.getAmount() < 0){
+           if (transaction.getAmount() < 0){ //checks for payments (negative transactions)
                System.out.println(transaction);
            }
        }

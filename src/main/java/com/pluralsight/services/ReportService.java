@@ -1,10 +1,5 @@
 package com.pluralsight.services;
 
-/*
-Handles all report-related filtering:
-custom search (bonus)
- */
-
 import com.pluralsight.models.Transaction;
 import com.pluralsight.ui.LedgerScreen;
 import com.pluralsight.ui.ReportScreen;
@@ -33,8 +28,8 @@ public class ReportService {
         ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions();
 
         for (Transaction transaction : listOfTransactions){
-            LocalDate transactionDate = LocalDate.parse(transaction.getDate());
-            LocalDate today = LocalDate.now();
+            LocalDate transactionDate = LocalDate.parse(transaction.getDate()); //gets transaction date
+            LocalDate today = LocalDate.now(); //gets current, local date
             LocalDate previousMonth = today.minusMonths(1); //sets previous month to = current (today) month - 1 (year)
 
             if (previousMonth.getMonth() == transactionDate.getMonth() && previousMonth.getYear() == transactionDate.getYear()){
@@ -49,8 +44,8 @@ public class ReportService {
         ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions();
 
         for (Transaction transaction : listOfTransactions){
-            LocalDate transactionDate = LocalDate.parse(transaction.getDate());
-            LocalDate today = LocalDate.now();
+            LocalDate transactionDate = LocalDate.parse(transaction.getDate()); //gets transaction date
+            LocalDate today = LocalDate.now(); //gets current, local date
             LocalDate previousYear = today.minusYears(1); //sets previous year to = current (today) year - 1 (year)
 
             if (previousYear.getYear() == transactionDate.getYear()){
@@ -64,8 +59,8 @@ public class ReportService {
         ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions();
 
         for (Transaction transaction : listOfTransactions){
-            LocalDate transactionDate = LocalDate.parse(transaction.getDate());
-            LocalDate today = LocalDate.now();
+            LocalDate transactionDate = LocalDate.parse(transaction.getDate()); //gets transaction date
+            LocalDate today = LocalDate.now(); //gets current, local date
 
             if (transactionDate.getYear() == today.getYear() && transactionDate.getMonth() == today.getMonth()){
                 //searches all transactions of current year to current date
@@ -77,14 +72,17 @@ public class ReportService {
     }
     public static void searchByVendor(WriteAndReadCSV transactions) throws IOException {
         ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions();
-
+        //sorts vendors in alphabetical order
         listOfTransactions.sort((o1, o2) -> o1.getVendor().compareTo(o2.getVendor()));
 
         for (Transaction transaction : listOfTransactions){
-            //sorts vendors in alphabetical order
             System.out.println(transaction);
         }
         LedgerScreen.transactionHistoryEnd();
         ReportScreen.ReportScreenUI(transactions);
+    }
+
+    public static void customFilterOptions(){
+
     }
 }

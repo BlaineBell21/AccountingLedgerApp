@@ -24,22 +24,21 @@ public class HomeScreen {
             displayHomeScreen();
             String userOption = InputHelper.promptString();
             switch(userOption.toUpperCase()){ //allows user to enter in lower case or upper case letter without erroring
-                case "D":
+                case "D": //takes user to depositing service
                     System.out.println("going to deposit menu");
                    TransactionFileService.depositService();
                     break;
-                case "P":
+                case "P": //takes user to payment service
                     System.out.println("going to payment menu");
                     TransactionFileService.paymentService();
                     break;
-                case "L":
+                case "L": //takes users to ledger menu
                     System.out.println("going to ledger menu");
                     isDoneForging = true;
                     LedgerScreen.LedgerScreenUI(transactions);
                     break;
-                case "X":
-                    System.out.println(); //eats extra line
-                    System.out.println("exiting forge");
+                case "X": //exits out of program
+                    HomeScreen.goodByeMessage(); //displays good bye message
                     isDoneForging = true;
                     break;
                 default:
