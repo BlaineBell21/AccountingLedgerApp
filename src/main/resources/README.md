@@ -1,6 +1,6 @@
 # 🔥 Budget Forge
 
-Budget Forge is a command-line Java application for tracking personal or business financial transactions. It allows users to record deposits and payments, store them in a CSV file, and generate financial reports based on date ranges or vendor searches.
+Budget Forge is a command-line Java application for tracking personal or business financial transactions. It allows users to record deposits and payments, store them in a CSV file, and generate financial reports based on date ranges, by vendor, or even make your own custom search.
 
 The application is designed to simulate a simple ledger system where all transactions are persisted and can be reviewed at any time.
 
@@ -11,12 +11,20 @@ The application is designed to simulate a simple ledger system where all transac
 - Add deposits (income transactions)
 - Make payments (expense transactions)
 - View full transaction ledger
-- Filter transactions:
-    - Month to Date
-    - Previous Month
-    - Year to Date
-    - Previous Year
-- Search transactions by vendor
+
+### 🔍 Built-in Filters
+- Month to Date
+- Previous Month
+- Year to Date
+- Previous Year
+- Search by vendor (alphabetical order)
+
+### 🛠️ Custom Filter Search
+- Start date and end date
+- Transaction description
+- Transaction vendor
+- Minimum and maximum amount
+
 - Transactions are saved to a CSV file for persistence
 - Automatic loading of past transactions on startup
 
@@ -26,25 +34,53 @@ The application is designed to simulate a simple ledger system where all transac
 
 - Java
 - File I/O (BufferedReader / BufferedWriter)
-- ArrayList data structures
+- ArrayList
 - Object-Oriented Programming (OOP)
 
+```
 ---
 
-## 📁 File Structure
+## 📁 Project Structure
 
-- `models/` – Transaction object definition
-- `services/` – Business logic (deposits, reports, ledger operations)
-- `utils/` – CSV reader/writer and helper utilities
-- `ui/` – CLI screens and user interaction flow
 
+AccountingLedgerApp (Budget Forge)
+│
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/pluralsight/
+│       │       ├── models/        # Data classes
+│       │       │   └── Transaction.java
+│       │       │
+│       │       ├── services/      # Business logic
+│       │       │   ├── LedgerService.java
+│       │       │   ├── ReportService.java
+│       │       │   └── TransactionFileService.java
+│       │       │
+│       │       ├── ui/            # CLI screens
+│       │       │   ├── HomeScreen.java
+│       │       │   ├── LedgerScreen.java
+│       │       │   └── ReportScreen.java
+│       │       │
+│       │       └── utils/         # Helper utilities
+│       │           ├── DateUtils.java
+│       │           ├── InputHelper.java
+│       │           └── WriteAndReadCSV.java
+│       │
+│       └── resources/
+│           └── transactions.csv
+│
+└── README.md
+           
+  
 ---
-
+```
 ## ▶️ How to Run the Project
-
+```
 1. Clone the repository:
-   ```bash
-   git clone <https://github.com/BlaineBell21/AccountingLedgerApp.git>
+
+```
+git clone https://github.com/BlaineBell21/AccountingLedgerApp.git
 
 
 2. Open the project in IntelliJ IDEA (or your preferred Java IDE)
@@ -58,8 +94,7 @@ All transactions are stored in:
 
 Each transaction follows this format:
 
-
-    date|time|description|vendor|amount
+date|time|description|vendor|amount
 
 Example:
 
