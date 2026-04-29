@@ -25,24 +25,21 @@ public class LedgerScreen {
             String userOption = InputHelper.promptString();
             switch(userOption.toUpperCase()){ //allows user to enter in lower case or upper case letter without erroring
                 case "D":
-                    System.out.println("display all entries");
                     isDoneForging = true;
                     LedgerService.showAllTransactions(transactions);
                     break;
                 case "P":
-                    System.out.println("display only deposits");
                     isDoneForging = true;
                     LedgerService.showOnlyDeposits(transactions);
                     break;
                 case "L":
-                    System.out.println("display only payments");
                     isDoneForging = true;
                     LedgerService.showOnlyPayments(transactions);
                     break;
                 case "R":
-                    System.out.println("report screen"); //custom search
+                    System.out.println("Going to report menu."); //custom search
                     isDoneForging = true;
-                    ReportScreen.ReportScreenUI();
+                    ReportScreen.ReportScreenUI(transactions);
                     break;
                 case "X":
                     System.out.println(); //eats extra line
@@ -54,5 +51,9 @@ public class LedgerScreen {
                     System.out.println("Invalid option, try again.\n");
             }
         }
+    }
+    public static void transactionHistoryEnd(){
+        System.out.println("End of transaction history.\n" +
+                "Returning to previous menu.");
     }
 }

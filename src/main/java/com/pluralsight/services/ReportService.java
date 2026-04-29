@@ -2,30 +2,87 @@ package com.pluralsight.services;
 
 /*
 Handles all report-related filtering:
-
-month to date
-previous month
-year to date
-previous year
-vendor search
 custom search (bonus)
  */
 
-public class ReportService {
-    public static void searchMonthToDate(){
+import com.pluralsight.models.Transaction;
+import com.pluralsight.ui.LedgerScreen;
+import com.pluralsight.ui.ReportScreen;
+import com.pluralsight.utils.WriteAndReadCSV;
 
-        System.out.println("test");
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+public class ReportService {
+    public static void searchMonthToDate(WriteAndReadCSV transactions) throws IOException {
+        ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions();
+
+        for (Transaction transaction : listOfTransactions){
+            LocalDate transactionDate = LocalDate.parse(transaction.getDate());
+            LocalDate today = LocalDate.now();
+
+            if (transactionDate.getMonth() == today.getMonth() && transactionDate.getYear() == today.getYear()){
+                System.out.println(transaction);
+            }
+        }
+        LedgerScreen.transactionHistoryEnd();
+        ReportScreen.ReportScreenUI(transactions);
     }
-    public static void searchByPreviousMonth(){
-        System.out.println("test");
+    public static void searchByPreviousMonth(WriteAndReadCSV transactions) throws IOException {
+        ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions();
+
+        for (Transaction transaction : listOfTransactions){
+            LocalDate transactionDate = LocalDate.parse(transaction.getDate());
+            LocalDate today = LocalDate.now();
+
+            LocalDate previousMonth = today.minusMonths(1);
+
+            if (previousMonth.getMonth() == transactionDate.getMonth() && previousMonth.getYear() == transactionDate.getYear()){
+                System.out.println(transaction);
+            }
+        }
+        LedgerScreen.transactionHistoryEnd();
+        ReportScreen.ReportScreenUI(transactions);
     }
-    public static void searchByYearToDate(){
-        System.out.println("test");
+    public static void searchByPreviousYear(WriteAndReadCSV transactions) throws IOException {
+        ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions();
+
+        for (Transaction transaction : listOfTransactions){
+            LocalDate transactionDate = LocalDate.parse(transaction.getDate());
+            LocalDate today = LocalDate.now();
+
+            LocalDate previousYear = today.minusYears(1);
+
+            if (previousYear.getYear() == transactionDate.getYear()){
+                System.out.println(transaction);
+            }
+        }
+        ReportScreen.ReportScreenUI(transactions);
     }
-    public static void searchByPreviousYear(){
-        System.out.println("test");
+    public static void searchByYearToDate(WriteAndReadCSV transactions) throws IOException {
+        ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions();
+
+        for (Transaction transaction : listOfTransactions){
+            LocalDate transactionDate = LocalDate.parse(transaction.getDate());
+            LocalDate today = LocalDate.now();
+
+            if (transactionDate.getYear() == today.getYear() && transactionDate.getMonth() == today.getMonth()){
+                System.out.println(transaction);
+            }
+        }
+        LedgerScreen.transactionHistoryEnd();
+        ReportScreen.ReportScreenUI(transactions);
     }
-    public static void searchByVendor(){
-        System.out.println("test");
+    public static void searchByVendor(WriteAndReadCSV transactions) throws IOException {
+        ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions();
+
+        listOfTransactions.sort((o1, o2) -> o1.getVendor().compareTo(o2.getVendor()));
+
+        for (Transaction transaction : listOfTransactions){
+            System.out.println(transaction);
+        }
+        LedgerScreen.transactionHistoryEnd();
+        ReportScreen.ReportScreenUI(transactions);
     }
 }

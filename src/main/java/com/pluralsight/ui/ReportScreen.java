@@ -2,6 +2,8 @@ package com.pluralsight.ui;
 
 import com.pluralsight.services.ReportService;
 import com.pluralsight.utils.InputHelper;
+import com.pluralsight.utils.WriteAndReadCSV;
+
 import java.io.IOException;
 
 public class ReportScreen {
@@ -17,7 +19,7 @@ public class ReportScreen {
             System.out.print("Enter your choice: ");
 
         }
-        public static void ReportScreenUI() throws IOException {
+        public static void ReportScreenUI(WriteAndReadCSV transactions) throws IOException {
             boolean isDoneForging = false;
 
             while(!isDoneForging){
@@ -27,32 +29,33 @@ public class ReportScreen {
                     case "1":
                         System.out.println("month to date");
                         isDoneForging = true;
-                        ReportService.searchMonthToDate();
+                        ReportService.searchMonthToDate(transactions);
                         break;
                     case "2":
                         System.out.println("previous month");
                         isDoneForging = true;
-                        ReportService.searchByPreviousMonth();
+                        ReportService.searchByPreviousMonth(transactions);
                         break;
                     case "3":
                         System.out.println("previous year");
                         isDoneForging = true;
-                        ReportService.searchByPreviousYear();
+                        ReportService.searchByPreviousYear(transactions);
                         break;
                     case "4":
-                        System.out.println("search by year"); //custom search
+                        System.out.println("year to date"); //custom search
                         isDoneForging = true;
-                        ReportService.searchByYearToDate();
+                        ReportService.searchByYearToDate(transactions);
                         break;
                     case "5":
                         System.out.println("search by vendor"); //custom search
                         isDoneForging = true;
-                        ReportService.searchByVendor();
+                        ReportService.searchByVendor(transactions);
                         break;
                     case "0":
                         System.out.println(); //eats extra line
-                        System.out.println("previous menu"); //allows user to go back to previous menu
+                        System.out.println("Returning to previous menu."); //allows user to go back to previous menu
                         isDoneForging = true;
+                        HomeScreen.homeScreenUI(transactions);
                         break;
                     default:
                         System.out.println("Invalid option, try again.\n");

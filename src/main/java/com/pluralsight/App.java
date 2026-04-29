@@ -13,6 +13,5 @@ public class App {
          WriteAndReadCSV.csvReader();
          HomeScreen.greetingMessage();
          HomeScreen.homeScreenUI(mainTransactionReference);
-
     }
 }

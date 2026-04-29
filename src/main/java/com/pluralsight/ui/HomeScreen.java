@@ -1,5 +1,6 @@
 package com.pluralsight.ui;
 
+import com.pluralsight.services.TransactionFileService;
 import com.pluralsight.utils.InputHelper;
 import com.pluralsight.utils.WriteAndReadCSV;
 
@@ -8,8 +9,7 @@ import java.io.IOException;
 public class HomeScreen {
 
     public static void displayHomeScreen(){
-        //System.out.println("\nSelect an action to continue forging: ");
-        System.out.println("home screen check");
+        System.out.println("\nSelect an action to continue forging: ");
         System.out.println("D) Forge a Deposit");
         System.out.println("P) Record a Payment");
         System.out.println("L) Open the Ledger");
@@ -26,13 +26,11 @@ public class HomeScreen {
             switch(userOption.toUpperCase()){ //allows user to enter in lower case or upper case letter without erroring
                 case "D":
                     System.out.println("going to deposit menu");
-                    isDoneForging = true;
-                   // TransactionFileService.depositService(transactions);
+                   TransactionFileService.depositService();
                     break;
                 case "P":
                     System.out.println("going to payment menu");
-                    isDoneForging = true;
-                    //TransactionFileService.paymentService(transactions);
+                    TransactionFileService.paymentService();
                     break;
                 case "L":
                     System.out.println("going to ledger menu");
@@ -47,7 +45,6 @@ public class HomeScreen {
                 default:
                     System.out.println("Invalid option, try again.\n");
             }
-
         }
     }
     public static void greetingMessage(){

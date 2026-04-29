@@ -8,24 +8,23 @@ import java.util.ArrayList;
 public class WriteAndReadCSV {
     private static ArrayList<Transaction> transactions = new ArrayList<>();
 
-    public static String csvWriter() throws IOException {
+    public static String csvWriter(Transaction transactions) throws IOException {
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter("src/transaction.csv", true));
-            for (Transaction transaction : transactions) {
-                String writeTransactions = transaction.toString();
-                String[] parts = writeTransactions.split("\\|");
-                if (parts.length != 5){
-                    System.out.println("Invalid format, skipping.");
-                } else{
-                    writer.newLine();
-                    writer.write(transaction.toString());
-                }
+        BufferedWriter writer = new BufferedWriter(new FileWriter("src/transaction.csv",true));
+
+            String writeTransactions = transactions.toString();
+            String[] parts = writeTransactions.split("\\|");
+            if (parts.length != 5){
+                System.out.println("Invalid format, skipping.");
+            } else{
+                writer.newLine();
+                writer.append(writeTransactions);
             }
-        writer.close();
-        return null;
+    writer.close();
+    return null;
     }
 
-    public static ArrayList<Transaction> csvReader() throws IOException {
+    public static void csvReader() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("src/transaction.csv"));
         String line;
         reader.readLine(); //allows reader to skip first line that shows the file formatting
@@ -43,11 +42,7 @@ public class WriteAndReadCSV {
                 }
             }
         reader.close();
-        return transactions;
-        }
-        public static void addNewTransactions(){
-
-        }
+    }
         public static ArrayList<Transaction> getTransactions() throws IOException {
         return transactions;
         }
