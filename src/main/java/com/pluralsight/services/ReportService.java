@@ -103,7 +103,7 @@ public class ReportService {
         String endDate = null;
         String description = null;
         String vendor = null;
-        double minAmount =0;
+        double minAmount = 0;
         double maxAmount = 0;
 
         while (!isDoneFiltering){
@@ -193,3 +193,15 @@ public class ReportService {
         ReportScreen.ReportScreenUI(transactions); //returns to previous menu
     }
 }
+/*
+if (description == matchedDescription && description != null){
+
+} else {
+matchedDescription = false
+}
+
+if (vendor == matchedVendor && vendor != null){
+
+} else {
+matchedvendor = false
+ */
