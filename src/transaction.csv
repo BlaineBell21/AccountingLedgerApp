@@ -1,55 +1,5 @@
 date|time|description|vendor|amount
 2024-01-05|09:15:32|office chair|Amazon|-129.99
-2024-01-08|14:22:10|client payment|Acme Corp|2500.00
-2024-01-12|11:05:45|laptop charger|Best Buy|-39.95
-2024-01-15|16:40:20|freelance web design|Smith LLC|1200.00
-2024-02-02|10:10:10|coffee supplies|Starbucks|-18.75
-2024-02-10|13:33:55|subscription refund|Adobe|59.99
-2025-11-22|16:58:31|holiday inventory purchase|Target|-430.75
-2024-06-05|08:12:10|office snacks|Costco|-62.15
-2024-07-11|14:45:30|freelance project payment|Pixel Studios|1400.00
-2024-08-22|11:05:49|business license renewal|City Services|-275.00
-2024-02-18|08:25:00|software license|JetBrains|-89.00
-2024-03-01|12:00:00|monthly retainer|BlueSky Agency|3000.00
-2024-03-10|17:45:30|external hard drive|Walmart|-79.49
-2026-01-05|09:22:10|new office chairs|Amazon|-340.50
-2026-01-18|14:05:42|consulting income|Vertex Solutions|2100.00
-2025-02-12|10:14:00|laptop repair|Geek Squad|-220.00
-2025-04-06|15:32:19|annual bonus|Employer Inc|2500.00
-2025-07-18|09:45:55|restaurant meeting|Olive Garden|-112.45
-2025-09-03|13:20:44|client invoice|OakTree Media|1850.00
-2024-03-22|09:50:15|consulting payment|Tech Solutions|1800.00
-2026-04-27|16:16:25|freelance payment|Pixel Studios|750.0
-2024-09-09|16:20:18|equipment reimbursement|Best Buy|320.00
-2024-10-14|09:40:50|fuel expense|Shell|-58.90
-2024-11-30|13:15:22|consulting income|Riverstone LLC|1750.00
-2025-01-17|10:25:35|marketing ads|Meta Ads|-410.00
-2025-03-08|15:44:10|software sale|Online Store|620.00
-2025-06-19|12:18:05|electric bill|PG&E|-134.60
-2026-04-27|16:30:41|vendor reimbursement|Target|95.0
-2026-04-27|16:33:10|client retainer|Silverline Agency|2500.0
-2026-03-21|15:18:40|website redesign payment|Summit Tech|1500.00
-2026-03-28|18:45:11|team lunch|DoorDash|-83.20
-2026-04-28|08:50:30|restaurant dinner|Olive Garden|84.6
-2026-04-28|11:20:55|working for uber|Uber|200.0
-2026-04-28|11:22:56|weekly stipend|Year Up United|200.0
-2026-03-02|08:10:14|software subscription|Adobe|-59.99
-2025-08-27|17:55:41|client payment|Apex Solutions|2100.00
-2025-12-05|08:50:14|office rent|Landlord LLC|-1450.00
-2026-01-29|14:07:28|refund received|Amazon|89.99
-2026-03-07|12:35:20|monthly client retainer|Blue Horizon|3000.00
-2026-03-14|10:20:50|gas expense|Chevron|-68.44
-2026-02-11|11:36:52|phone bill|Verizon|-95.25
-2026-04-27|18:22:47|consulting deposit|TechNova|1950.00
-2026-04-19|16:10:05|freelance payment|DesignWorks LLC|875.00
-2026-04-25|13:55:30|internet bill|Comcast|-92.15
-2026-04-27|16:33:23|vendor reimbursement|Target|95.0
-2026-04-27|16:33:57|product sale|Online Store|640.0
-2026-04-28|08:45:46|marketing expense|Meta Ads|320.0
-2026-04-03|09:15:22|coffee inventory|Costco|-145.67
-2026-04-08|14:42:11|client invoice payment|NorthBay Media|2200.00
-2026-04-12|11:30:45|office printer paper|Staples|-48.99
-2024-01-05|09:15:32|office chair|Amazon|-129.99
 2024-01-08|14:22:10|client payment|Acme Corp|2500.0
 2024-01-12|11:05:45|laptop charger|Best Buy|-39.95
 2024-01-15|16:40:20|freelance web design|Smith LLC|1200.0
@@ -79,7 +29,7 @@ date|time|description|vendor|amount
 2026-04-27|16:30:41|vendor reimbursement|Target|95.0
 2026-04-27|16:33:10|client retainer|Silverline Agency|2500.0
 2026-03-21|15:18:40|website redesign payment|Summit Tech|1500.0
-2024-12-05|12:20:40|team lunch|DoorDash|-83.2
+2026-03-28|18:45:11|team lunch|DoorDash|-83.2
 2026-04-28|08:50:30|restaurant dinner|Olive Garden|84.6
 2026-04-28|11:20:55|working for uber|Uber|200.0
 2026-04-28|11:22:56|weekly stipend|Year Up United|200.0
@@ -99,33 +49,34 @@ date|time|description|vendor|amount
 2026-04-03|09:15:22|coffee inventory|Costco|-145.67
 2026-04-08|14:42:11|client invoice payment|NorthBay Media|2200.0
 2026-04-12|11:30:45|office printer paper|Staples|-48.99
+2024-12-05|12:20:40|team lunch|DoorDash|-83.2
 2026-04-28|20:59:28|Twitch payout|twitch|450.0
 2026-04-28|20:59:40|freelance logo design|Horizon Creative|1200.0
-2026-04-28|20:59:52|tax refund|IRS|875.50
+2026-04-28|20:59:52|tax refund|IRS|875.5
 2026-04-28|21:00:03|client invoice|Redwood Tech|2100.0
 2026-04-29|08:46:42|Twitch payout|Twitch|450.0
 2026-04-29|08:47:00|freelance logo design|Horizon Creative|1200.0
 2026-04-29|08:48:57|Twitch payout|Twitch|450.0
 2026-04-29|08:49:11|freelance logo design|Horizon Creative|1200.0
 2026-01-05|09:15:22|office supplies|Amazon|-89.99
-2026-01-12|14:22:10|client payment|Redwood Tech|1200.00
+2026-01-12|14:22:10|client payment|Redwood Tech|1200.0
 2026-01-20|11:45:55|groceries|Costco|-145.67
 2026-02-03|08:10:11|office supplies|Staples|-54.25
-2026-02-14|15:32:44|client payment|Redwood Tech|850.00
+2026-02-14|15:32:44|client payment|Redwood Tech|850.0
 2026-02-21|12:05:19|gas refill|Chevron|-67.42
 2026-03-01|10:18:33|software subscription|Adobe|-29.99
-2026-03-09|16:45:21|client payment|Blue Horizon|2200.00
-2026-03-17|13:27:05|groceries|Costco|-112.90
-2026-03-28|09:50:47|office supplies|Amazon|-120.00
-2026-04-02|11:40:16|freelance payment|Redwood Tech|950.00
+2026-03-09|16:45:21|client payment|Blue Horizon|2200.0
+2026-03-17|13:27:05|groceries|Costco|-112.9
+2026-03-28|09:50:47|office supplies|Amazon|-120.0
+2026-04-02|11:40:16|freelance payment|Redwood Tech|950.0
 2026-04-08|17:14:39|gas refill|Chevron|-58.33
 2026-04-12|08:55:12|software subscription|Adobe|-29.99
-2026-04-18|14:20:45|client payment|Blue Horizon|1750.00
+2026-04-18|14:20:45|client payment|Blue Horizon|1750.0
 2026-04-25|19:05:30|groceries|Costco|-98.76
 2026-05-03|09:22:41|office supplies|Staples|-76.14
-2026-05-10|15:47:52|freelance payment|Redwood Tech|1350.00
+2026-05-10|15:47:52|freelance payment|Redwood Tech|1350.0
 2026-05-16|12:35:20|gas refill|Chevron|-72.88
-2026-05-24|18:10:03|client payment|Blue Horizon|2000.00
-2026-05-30|10:28:15|office supplies|Amazon|-64.50
+2026-05-24|18:10:03|client payment|Blue Horizon|2000.0
+2026-05-30|10:28:15|office supplies|Amazon|-64.5
 2026-04-29|15:24:47|friends of the sea deskmat|Umvvelt|-35.0
 2026-04-29|15:26:46|Pink Sunset deskmat|Umvvelt|-35.0

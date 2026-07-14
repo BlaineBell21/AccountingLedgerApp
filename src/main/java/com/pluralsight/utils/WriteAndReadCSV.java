@@ -25,9 +25,23 @@ public class WriteAndReadCSV {
     return null;
     }
 
+    public static void overWriteCSV() throws IOException
+    {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("src/transaction.csv"));
+        writer.write("date|time|description|vendor|amount");
+        for (Transaction transaction : transactions)
+        {
+            writer.newLine();
+            writer.write(transaction.toString());
+        }
+        writer.close();
+    }
+
     public static void csvReader() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("src/transaction.csv"));
         String line;
+        //tracks records already loaded so the same transaction is never added twice
+        ArrayList<String> seenTransactions = new ArrayList<>();
         reader.readLine(); //allows reader to skip first line that shows the file formatting
         while((line = reader.readLine()) != null) {
 
@@ -38,6 +52,14 @@ public class WriteAndReadCSV {
                     String descriptionOfTransaction = parts[2].trim();
                     String vendorOfTransaction = parts[3].trim();
                     double amountOfTransaction = Double.parseDouble(parts[4].trim());
+
+                    //builds a key from the parsed values; using the parsed amount normalizes 2500.00 and 2500.0 to the same value
+                    String transactionKey = dateOfTransaction + "|" + timeOfTransaction + "|" + descriptionOfTransaction + "|" + vendorOfTransaction + "|" + amountOfTransaction;
+                    if (seenTransactions.contains(transactionKey)) {
+                        continue; //skips a record we have already loaded, preventing duplicates in memory
+                    }
+                    seenTransactions.add(transactionKey);
+
                    transactions.add(new Transaction(dateOfTransaction, timeOfTransaction, descriptionOfTransaction, vendorOfTransaction, amountOfTransaction));
                     //reads csv file and adds transactions into array to be accessed elsewhere
                 }
