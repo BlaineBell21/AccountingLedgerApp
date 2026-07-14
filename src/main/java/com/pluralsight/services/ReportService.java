@@ -193,15 +193,3 @@ public class ReportService {
         ReportScreen.ReportScreenUI(transactions); //returns to previous menu
     }
 }
-/*
-if (description == matchedDescription && description != null){
-
-} else {
-matchedDescription = false
-}
-
-if (vendor == matchedVendor && vendor != null){
-
-} else {
-matchedvendor = false
- */

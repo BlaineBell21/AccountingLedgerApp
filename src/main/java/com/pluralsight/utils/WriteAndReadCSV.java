@@ -3,33 +3,65 @@ package com.pluralsight.utils;
 import com.pluralsight.models.Transaction;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class WriteAndReadCSV {
-    //array created to store transactions; encapsulation to avoid array being manipulated in areas not permitted to be
+    // array created to store transactions; encapsulation to avoid array being manipulated in areas not permitted to be
     private static ArrayList<Transaction> transactions = new ArrayList<>();
+    private static final String DIRECTORY_PATH = "src/main/java/data/transactionRecords";
+    private static final String FILE_NAME = "transactions.csv";
 
-    public static String csvWriter(Transaction transactions) throws IOException {
+    public static void csvWriter(Transaction transactions) {
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter("src/transaction.csv",true));
+        try {
+
+        File folder = new File(DIRECTORY_PATH);
+
+        if (!folder.exists()){ // enters if statement if directory doesnt exist
+
+            System.out.println("Missing directories: " + folder.getName()); // informs user of what directory is missing
+            if (!folder.mkdirs()){
+                System.out.println("Failed to create directories");
+                return; // if directors fail to be created exists csv logic
+            }
+            System.out.println("Directories created");
+        }
+
+        File file = new File(folder, FILE_NAME); // creates missing csv file
+
+            boolean newFile = !file.exists();
 
             String writeTransactions = transactions.toString();
+
             String[] parts = writeTransactions.split("\\|");
-            if (parts.length != 5){ //created to skip invalidly formatted transactions
+            if (parts.length != 5) { // created to skip invalidly formatted transactions
                 System.out.println("Invalid format, skipping.");
-            } else{
-                writer.newLine();
-                writer.append(writeTransactions); //appends new transaction to existing csv file
             }
-    writer.close();
-    return null;
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+
+
+            if (newFile){
+                System.out.println("Missing CSV file");
+                writer.append("date|time|description|vendor|amount");
+                writer.newLine();
+                System.out.println("CSV file created");
+            }
+            writer.append(writeTransactions); // appends new transaction to existing csv file
+            writer.newLine();
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error: Unable to write to CSV file.");
+        }
     }
 
-    public static void csvReader() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("src/transaction.csv"));
-        String line;
-        reader.readLine(); //allows reader to skip first line that shows the file formatting
-        while((line = reader.readLine()) != null) {
+    public static void csvReader(){
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("src/main/java/data/transactionRecords/transactions.csv"));
+            String line;
+            reader.readLine(); // allows reader to skip first line that shows the file formatting
+            while ((line = reader.readLine()) != null) {
 
                 String[] parts = line.split("\\|");
                 if (parts.length == 5) {
@@ -38,13 +70,17 @@ public class WriteAndReadCSV {
                     String descriptionOfTransaction = parts[2].trim();
                     String vendorOfTransaction = parts[3].trim();
                     double amountOfTransaction = Double.parseDouble(parts[4].trim());
-                   transactions.add(new Transaction(dateOfTransaction, timeOfTransaction, descriptionOfTransaction, vendorOfTransaction, amountOfTransaction));
-                    //reads csv file and adds transactions into array to be accessed elsewhere
+                    transactions.add(new Transaction(dateOfTransaction, timeOfTransaction, descriptionOfTransaction, vendorOfTransaction, amountOfTransaction));
+                    // reads csv file and adds transactions into array to be accessed elsewhere
                 }
             }
-        reader.close();
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("Error: Unable to read CSV file");
+        }
     }
-        public static ArrayList<Transaction> getTransactions() throws IOException { //getter to access private array
-        return transactions;
+        public static ArrayList<Transaction> getTransactions(){ // getter to access private array
+            return transactions;
+
         }
     }
