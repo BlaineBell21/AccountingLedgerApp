@@ -7,6 +7,7 @@ import com.pluralsight.utils.WriteAndReadCSV;
 
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 public class TransactionFileService {
 
@@ -23,8 +24,8 @@ public class TransactionFileService {
             String vendorName = InputHelper.promptString(); //takes string input on transaction vendor name
 
             System.out.println("Enter in the amount you'd like to deposit: ");
-            double depositAmount = InputHelper.promptDouble(); //takes double input of deposit amount
-            if (depositAmount < 0) {
+            BigDecimal depositAmount = InputHelper.promptBigDecimal(); //takes BigDecimal input of deposit amount
+            if (depositAmount.compareTo(BigDecimal.ZERO) < 0) {
                 System.out.println("You must enter in a positive amount");
                 break;
             }
@@ -66,13 +67,13 @@ public class TransactionFileService {
             String vendorName = InputHelper.promptString(); //takes string input on transaction vendor name
 
             System.out.println("Enter in the amount you are being billed for: ");
-            double depositAmount = InputHelper.promptDouble(); //takes double input of payment amount
-            if (depositAmount < 0) {
+            BigDecimal depositAmount = InputHelper.promptBigDecimal(); //takes BigDecimal input of payment amount
+            if (depositAmount.compareTo(BigDecimal.ZERO) < 0) {
                 System.out.println("You must enter in a positive amount");
                 break;
             }
             //creates an object for transaction
-            Transaction newPayment = new Transaction(DateUtils.currentDate(), DateUtils.currentTime(), description,vendorName, -depositAmount);
+            Transaction newPayment = new Transaction(DateUtils.currentDate(), DateUtils.currentTime(), description,vendorName, depositAmount.negate());
             WriteAndReadCSV.csvWriter(newPayment);
 
             boolean isFinished = false;

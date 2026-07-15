@@ -6,6 +6,7 @@ import com.pluralsight.ui.ReportScreen;
 import com.pluralsight.utils.InputHelper;
 import com.pluralsight.utils.WriteAndReadCSV;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -103,8 +104,8 @@ public class ReportService {
         String endDate = null;
         String description = null;
         String vendor = null;
-        double minAmount = 0;
-        double maxAmount = 0;
+        BigDecimal minAmount = BigDecimal.ZERO;
+        BigDecimal maxAmount = BigDecimal.ZERO;
 
         while (!isDoneFiltering){
             customFilterUI(); //shows custom filter CLI
@@ -125,10 +126,10 @@ public class ReportService {
             }
             if(chosenFilter.equals("4")){
                 System.out.println("Enter minimum transaction amount: ");
-                minAmount = InputHelper.promptDouble(); //filter by minimum
+                minAmount = InputHelper.promptBigDecimal(); //filter by minimum
 
                 System.out.println("Enter maximum transaction amount: ");
-                maxAmount = InputHelper.promptDouble(); //filter by maximum amount
+                maxAmount = InputHelper.promptBigDecimal(); //filter by maximum amount
             }
             if(chosenFilter.equals("5")){ //filter by vendor name
                 System.out.println("Enter the merchant/vendor name: ");
@@ -153,7 +154,7 @@ public class ReportService {
         }
         matchedTransaction(startDate, endDate, description, vendor, minAmount, maxAmount, transactions); //returns user choices to transaction matching method
     }
-    public static void matchedTransaction(String startDate, String endDate, String description, String vendor, double minAmount, double maxAmount, WriteAndReadCSV transactions) throws IOException {
+    public static void matchedTransaction(String startDate, String endDate, String description, String vendor, BigDecimal minAmount, BigDecimal maxAmount, WriteAndReadCSV transactions) throws IOException {
         //method to filter through transactions based on inputted filters
         ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions(); //calls main array list
 
@@ -178,10 +179,10 @@ public class ReportService {
                                     || transaction.getVendor().contains(vendor));
 
             //if inputted min value is 0 or transaction min value is greater than or equal to min
-            boolean matchMinAmount = minAmount == 0 || transaction.getAmount() >= minAmount;
+            boolean matchMinAmount = minAmount.compareTo(BigDecimal.ZERO) == 0 || transaction.getAmount().compareTo(minAmount) >= 0;
 
             //if inputted max value is 0 or transaction max value is less than or equal to max
-            boolean matchMaxAmount = maxAmount == 0 || transaction.getAmount() <= maxAmount;
+            boolean matchMaxAmount = maxAmount.compareTo(BigDecimal.ZERO) == 0 || transaction.getAmount().compareTo(maxAmount) <= 0;
 
             if(matchStartDate && matchEndDate && matchDescription && matchVendor && matchMinAmount && matchMaxAmount){
                 //checks if all criteria are met
