@@ -10,7 +10,7 @@ import java.util.Comparator;
 
 public class LedgerService {
     public static void showAllTransactions(WriteAndReadCSV transactions) throws IOException {
-        ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions(); //accesses transaction repository holding all transactions
+        ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions(); // accesses transaction repository holding all transactions
 
         listOfTransactions.sort(Comparator.comparing(Transaction::getAmount));
 

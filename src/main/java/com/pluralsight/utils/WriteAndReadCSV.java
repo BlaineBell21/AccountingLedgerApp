@@ -3,7 +3,6 @@ package com.pluralsight.utils;
 import com.pluralsight.models.Transaction;
 
 import java.io.*;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class WriteAndReadCSV {
@@ -16,19 +15,19 @@ public class WriteAndReadCSV {
 
         try {
 
-        File folder = new File(DIRECTORY_PATH);
+            File folder = new File(DIRECTORY_PATH);
 
-        if (!folder.exists()){ // enters if statement if directory doesnt exist
+            if (!folder.exists()) { // enters if statement if directory doesnt exist
 
-            System.out.println("Missing directories: " + folder.getName()); // informs user of what directory is missing
-            if (!folder.mkdirs()){
-                System.out.println("Failed to create directories");
-                return; // if directors fail to be created exists csv logic
+                System.out.println("Missing directories: " + folder.getName()); // informs user of what directory is missing
+                if (!folder.mkdirs()) {
+                    System.out.println("Failed to create directories");
+                    return; // if directors fail to be created exists csv logic
+                }
+                System.out.println("Directories created");
             }
-            System.out.println("Directories created");
-        }
 
-        File file = new File(folder, FILE_NAME); // creates missing csv file
+            File file = new File(folder, FILE_NAME); // creates missing csv file
 
             boolean newFile = !file.exists();
 
@@ -41,8 +40,7 @@ public class WriteAndReadCSV {
 
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
 
-
-            if (newFile){
+            if (newFile) {
                 System.out.println("Missing CSV file");
                 writer.append("date|time|description|vendor|amount");
                 writer.newLine();
@@ -55,9 +53,10 @@ public class WriteAndReadCSV {
             System.out.println("Error: Unable to write to CSV file.");
         }
     }
-
-    public static void csvReader(){
+    public static void csvReader() {
         try {
+            //tracks records already loaded so the same transaction is never added twice
+            ArrayList<String> seenTransactions = new ArrayList<>();
             BufferedReader reader = new BufferedReader(new FileReader("src/main/java/data/transactionRecords/transactions.csv"));
             String line;
             reader.readLine(); // allows reader to skip first line that shows the file formatting
@@ -70,8 +69,16 @@ public class WriteAndReadCSV {
                     String descriptionOfTransaction = parts[2].trim();
                     String vendorOfTransaction = parts[3].trim();
                     double amountOfTransaction = Double.parseDouble(parts[4].trim());
+
+                    //builds a key from the parsed values; using the parsed amount normalizes 2500.00 and 2500.0 to the same value
+                    String transactionKey = dateOfTransaction + "|" + timeOfTransaction + "|" + descriptionOfTransaction + "|" + vendorOfTransaction + "|" + amountOfTransaction;
+                    if (seenTransactions.contains(transactionKey)) {
+                        continue; //skips a record we have already loaded, preventing duplicates in memory
+                    }
+                    seenTransactions.add(transactionKey);
+
                     transactions.add(new Transaction(dateOfTransaction, timeOfTransaction, descriptionOfTransaction, vendorOfTransaction, amountOfTransaction));
-                    // reads csv file and adds transactions into array to be accessed elsewhere
+                    //reads csv file and adds transactions into array to be accessed elsewhere
                 }
             }
             reader.close();
@@ -79,8 +86,7 @@ public class WriteAndReadCSV {
             System.out.println("Error: Unable to read CSV file");
         }
     }
-        public static ArrayList<Transaction> getTransactions(){ // getter to access private array
-            return transactions;
-
-        }
+    public static ArrayList<Transaction> getTransactions(){
+        return transactions;
     }
+}
