@@ -6,6 +6,7 @@ import com.pluralsight.utils.WriteAndReadCSV;
 
 import java.io.IOException;
 
+
 public class ReportScreen {
     public static void displayReportScreen(){
         System.out.println("\n════════════════════════════════════════════");

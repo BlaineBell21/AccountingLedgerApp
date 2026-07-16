@@ -84,6 +84,7 @@ public class WriteAndReadCSV {
                     //reads csv file and adds transactions into array to be accessed elsewhere
                 }
             }
+
             reader.close();
         } catch (IOException e) {
             System.out.println("Error: Unable to read CSV file");
