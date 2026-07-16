@@ -31,7 +31,7 @@ public class ReportScreen {
             switch(userOption.trim().toUpperCase()){ //allows lower case or upper case input without erroring
                 case "1": //allows search for current month to current date
                     System.out.println("Forging month-to-date report...");
-                    isDoneForging = true;
+
                     ReportService.searchMonthToDate(transactions);
                     break;
                 case "2": //allows search for previous month current year
