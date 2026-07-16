@@ -1,13 +1,16 @@
 package com.pluralsight.models;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Transaction {
     private String date;
     private String time;
     private String description;
     private String vendor;
-    private double amount;
+    private BigDecimal amount;
 
-    public Transaction(String _date, String _time, String _description, String _vendor, double _amount) {
+    public Transaction(String _date, String _time, String _description, String _vendor, BigDecimal _amount) {
         this.date = _date;
         this.time = _time;
         this.description = _description;
@@ -17,7 +20,7 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return getDate()+ "|"+ getTime() + "|" + getDescription() + "|" + getVendor() + "|" +getAmount();
+        return getDate()+ "|"+ getTime() + "|" + getDescription() + "|" + getVendor() + "|" + getAmount().setScale(2, RoundingMode.HALF_UP).toPlainString();
     }
 
     public String getDate() {
@@ -38,7 +41,7 @@ public class Transaction {
     }
 
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 

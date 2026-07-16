@@ -2,6 +2,7 @@ package com.pluralsight.ui;
 
 import com.pluralsight.services.TransactionFileService;
 import com.pluralsight.utils.InputHelper;
+import com.pluralsight.utils.SoundUtils;
 import com.pluralsight.utils.WriteAndReadCSV;
 
 import java.io.IOException;
@@ -27,19 +28,23 @@ public class HomeScreen {
             String userOption = InputHelper.promptString();
             switch(userOption.trim().toUpperCase()){ //allows user to enter in lower case or upper case letter without erroring
                 case "D": //takes user to depositing service
+                    SoundUtils.playMenuClick();
                     System.out.println("Forge a Deposit");
                    TransactionFileService.depositService();
                     break;
                 case "P": //takes user to payment service
+                    SoundUtils.playMenuClick();
                     System.out.println("Forge a Payment");
                     TransactionFileService.paymentService();
                     break;
                 case "L": //takes users to ledger menu
+                    SoundUtils.playMenuClick();
                     System.out.println("Open the Ledger");
                     isDoneForging = true;
                     LedgerScreen.LedgerScreenUI(transactions);
                     break;
                 case "X": //exits out of program
+                    SoundUtils.playExitSound();
                     HomeScreen.goodByeMessage(); //displays goodbye message
                     isDoneForging = true;
                     break;

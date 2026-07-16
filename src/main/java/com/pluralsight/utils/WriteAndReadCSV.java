@@ -3,6 +3,7 @@ package com.pluralsight.utils;
 import com.pluralsight.models.Transaction;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class WriteAndReadCSV {
@@ -68,10 +69,10 @@ public class WriteAndReadCSV {
                     String timeOfTransaction = parts[1].trim();
                     String descriptionOfTransaction = parts[2].trim();
                     String vendorOfTransaction = parts[3].trim();
-                    double amountOfTransaction = Double.parseDouble(parts[4].trim());
+                    BigDecimal amountOfTransaction = new BigDecimal(parts[4].trim());
 
-                    //builds a key from the parsed values; using the parsed amount normalizes 2500.00 and 2500.0 to the same value
-                    String transactionKey = dateOfTransaction + "|" + timeOfTransaction + "|" + descriptionOfTransaction + "|" + vendorOfTransaction + "|" + amountOfTransaction;
+                    //builds a key from the parsed values; stripping trailing zeros normalizes 2500.00 and 2500.0 to the same value
+                    String transactionKey = dateOfTransaction + "|" + timeOfTransaction + "|" + descriptionOfTransaction + "|" + vendorOfTransaction + "|" + amountOfTransaction.stripTrailingZeros().toPlainString();
                     if (seenTransactions.contains(transactionKey)) {
                         continue; //skips a record we have already loaded, preventing duplicates in memory
                     }
