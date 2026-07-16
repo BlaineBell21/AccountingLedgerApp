@@ -73,12 +73,21 @@ public class ReportService {
         ReportScreen.ReportScreenUI(transactions);
     }
     public static void searchByVendor(WriteAndReadCSV transactions) throws IOException {
-        ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions();
+        ArrayList<Transaction> listOfTransactions =transactions.getTransactions();
+        System.out.println("Enter vendor name:");
+        String vendorSearch=InputHelper.promptString().trim();
+        boolean found = false;
         //sorts vendors in alphabetical order
         listOfTransactions.sort((o1, o2) -> o1.getVendor().compareTo(o2.getVendor()));
 
         for (Transaction transaction : listOfTransactions){
-            System.out.println(transaction);
+            if(transaction.getVendor().equalsIgnoreCase(vendorSearch)){
+                System.out.println(transaction);
+                found = true;
+            }
+        }
+        if (!found){
+            System.out.println("No transaction found for vendor: "+vendorSearch);
         }
         LedgerScreen.transactionHistoryEnd();
         ReportScreen.ReportScreenUI(transactions);
