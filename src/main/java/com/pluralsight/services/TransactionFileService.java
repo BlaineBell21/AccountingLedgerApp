@@ -3,6 +3,7 @@ package com.pluralsight.services;
 import com.pluralsight.models.Transaction;
 import com.pluralsight.utils.DateUtils;
 import com.pluralsight.utils.InputHelper;
+import com.pluralsight.utils.SoundUtils;
 import com.pluralsight.utils.WriteAndReadCSV;
 
 
@@ -32,6 +33,7 @@ public class TransactionFileService {
             //creates an object for transaction
             Transaction newDeposit = new Transaction(DateUtils.currentDate(), DateUtils.currentTime(), description,vendorName, depositAmount);
             WriteAndReadCSV.csvWriter(newDeposit); //writes transaction details to CSV file
+            SoundUtils.playSuccessChime();
 
             boolean isFinished = false;
             while (!isFinished) {
@@ -75,6 +77,7 @@ public class TransactionFileService {
             //creates an object for transaction
             Transaction newPayment = new Transaction(DateUtils.currentDate(), DateUtils.currentTime(), description,vendorName, depositAmount.negate());
             WriteAndReadCSV.csvWriter(newPayment);
+            SoundUtils.playSuccessChime();
 
             boolean isFinished = false;
             while(!isFinished) {
