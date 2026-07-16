@@ -11,7 +11,7 @@ import java.util.Comparator;
 
 public class LedgerService {
     public static void showAllTransactions(WriteAndReadCSV transactions) throws IOException {
-        ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions(); // accesses transaction repository holding all transactions
+        ArrayList<Transaction> listOfTransactions = listOfTransactions= transactions.getTransactions(); // accesses transaction repository holding all transactions
 
         listOfTransactions.sort(Comparator.comparing(Transaction::getAmount));
 
@@ -21,7 +21,6 @@ public class LedgerService {
         LedgerScreen.transactionHistoryEnd();
         LedgerScreen.LedgerScreenUI(transactions); //returns to ledger screen
     }
-
     public static void showOnlyDeposits(WriteAndReadCSV transactions) throws IOException {
         ArrayList<Transaction> listOfTransactions = WriteAndReadCSV.getTransactions(); //accesses transaction repository holding all transactions
 

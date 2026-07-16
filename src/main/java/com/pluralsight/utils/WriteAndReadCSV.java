@@ -6,6 +6,8 @@ import java.io.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+// class name must match the file name (WriteAndReadCSV.java) or the project won't compile;
+// other classes (LedgerService, ReportService, TransactionFileService) also reference this type by this exact name
 public class WriteAndReadCSV {
     // array created to store transactions; encapsulation to avoid array being manipulated in areas not permitted to be
     private static ArrayList<Transaction> transactions = new ArrayList<>();
@@ -82,6 +84,7 @@ public class WriteAndReadCSV {
                     //reads csv file and adds transactions into array to be accessed elsewhere
                 }
             }
+
             reader.close();
         } catch (IOException e) {
             System.out.println("Error: Unable to read CSV file");
